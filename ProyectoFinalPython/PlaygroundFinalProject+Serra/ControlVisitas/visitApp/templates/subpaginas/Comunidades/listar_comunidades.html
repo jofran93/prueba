@@ -1,0 +1,22 @@
+{% extends 'pagina_inicio.html' %}
+
+{% block content %}
+    <h2>Lista de Clientes</h2>
+
+    <!-- Formulario de búsqueda -->
+    <form method="GET">
+        <input type="text" name="search" placeholder="Buscar cliente">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Resultados de la búsqueda -->
+    <ul>
+        {% for cliente in clientes %}
+            <li>{{ cliente.nombre }}</li>
+        {% empty %}
+            <li>No se encontraron clientes.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'crear_cliente' %}">Crear Cliente</a>
+{% endblock %}
